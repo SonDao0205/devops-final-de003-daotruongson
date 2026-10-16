@@ -28,7 +28,7 @@ ENV APP_VERSION=${APP_VERSION} \
 WORKDIR /app
 
 # Chạy ứng dụng bằng user thường, không dùng root
-RUN groupadd -r spring && useradd -r -g spring spring
+RUN addgroup -r spring && useradd -r -g spring spring
 # Chỉ lấy file JAR từ stage build
 COPY --from=build /workspace/build/libs/app.jar /app/app.jar
 USER spring
